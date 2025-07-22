@@ -1,5 +1,5 @@
 class Account:
-    def _init_(self, card_number, pin, balance=0.0):
+    def __init__(self, card_number, pin, balance=0.0):   # FIXED: __init__
         self.card_number = card_number
         self.pin = pin
         self.balance = balance
@@ -34,6 +34,7 @@ class Account:
             for h in self.history:
                 print(" -", h)
 
+
 # Sample user database
 accounts = {
     "1111": Account("1111", "1234", 5000),
@@ -59,11 +60,17 @@ def atm_menu(account):
         if choice == '1':
             account.check_balance()
         elif choice == '2':
-            amount = float(input("Enter amount to deposit: ₹"))
-            account.deposit(amount)
+            try:
+                amount = float(input("Enter amount to deposit: ₹"))
+                account.deposit(amount)
+            except ValueError:
+                print("Invalid amount. Please enter a number.")
         elif choice == '3':
-            amount = float(input("Enter amount to withdraw: ₹"))
-            account.withdraw(amount)
+            try:
+                amount = float(input("Enter amount to withdraw: ₹"))
+                account.withdraw(amount)
+            except ValueError:
+                print("Invalid amount. Please enter a number.")
         elif choice == '4':
             account.show_history()
         elif choice == '5':
@@ -83,5 +90,6 @@ def main():
     else:
         print("Authentication failed. Please check your card number or PIN.")
 
-if _name_ == "_main_":
-    main()
+
+if __name__ == "__main__": 
+    main()
