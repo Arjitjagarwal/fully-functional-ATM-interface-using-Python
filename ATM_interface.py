@@ -1,5 +1,5 @@
 class Account:
-    def __init__(self, card_number, pin, balance=0.0):   # FIXED: __init__
+    def __init__(self, card_number, pin, balance=0.0):   
         self.card_number = card_number
         self.pin = pin
         self.balance = balance
@@ -35,7 +35,7 @@ class Account:
                 print(" -", h)
 
 
-# Sample user database
+
 accounts = {
     "1111": Account("1111", "1234", 5000),
     "2222": Account("2222", "4321", 10000)
